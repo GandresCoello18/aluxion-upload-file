@@ -8,14 +8,13 @@ import {
   Res,
   Body,
   BadRequestException,
-  // UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileUploadService } from './files.service';
-import { LoggerService } from 'src/shared/logger/logger.service';
+import { LoggerService } from '../../shared/logger/logger.service';
 import { UploadFromUnsplashDto } from './dto/upload-from-unsplash.dto';
-import { isValidUrl } from 'src/shared/helpers/validation.helper';
+import { isValidUrl } from '../../shared/helpers/validation.helper';
 import {
   ApiBody,
   ApiConsumes,
@@ -24,9 +23,9 @@ import {
   ApiResponse,
 } from '@nestjs/swagger';
 import { UploadFileDto } from './dto/update-file.dto';
-// import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { SUCCESS_UPLOAD_FILE_AWS } from './files.swagger';
 import { FAIL_TOKEN_NOT_FOUND_USER } from '../users/user.swagger';
+import { RenameFileUploadDto } from './dto/rename-file.dto';
 
 @Controller('file-upload')
 export class FileUploadController {
@@ -56,16 +55,6 @@ export class FileUploadController {
     description: 'Archivo a subir',
   })
   @ApiConsumes('multipart/form-data')
-  @ApiOkResponse({
-    description: 'Archivo obtenido correctamente',
-    schema: {
-      example: {
-        url: 'https://s3.amazonaws.com/bucket/file.png',
-        filename: 'file.png',
-      },
-    },
-  })
-  // @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
     const responseUploadFileS3 =
@@ -95,7 +84,6 @@ export class FileUploadController {
     description: 'Imagen URL a subir',
   })
   @ApiConsumes('application/json')
-  // @UseGuards(JwtAuthGuard)
   async uploadFromUnsplash(
     @Body() uploadFromUnsplashDto: UploadFromUnsplashDto,
   ) {
@@ -110,7 +98,6 @@ export class FileUploadController {
   }
 
   @Get('download/s3/:key')
-  //@UseGuards(JwtAuthGuard)
   async downloadFileS3(@Param('key') key: string, @Res() res: Response) {
     const fileContent = await this.fileUploadService.downloadFileFromS3(key);
 
@@ -127,18 +114,30 @@ export class FileUploadController {
   }
 
   @Get('public-url/:key')
-  //@UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Obtener URL pública de un archivo' })
+  @ApiOkResponse({
+    description: 'Archivo obtenido correctamente',
+    schema: {
+      example: {
+        url: 'https://s3.amazonaws.com/bucket/file.png',
+      },
+    },
+  })
+  @ApiConsumes('application/json')
   getPublicUrl(@Param('key') key: string) {
     const url = this.fileUploadService.getPublicUrl(key);
     return { url };
   }
 
   @Post('rename')
-  //@UseGuards(JwtAuthGuard)
-  async renameFile(
-    @Body('oldKey') oldKey: string,
-    @Body('newKey') newKey: string,
-  ) {
+  @ApiOperation({ summary: 'Renombrar un archivo' })
+  @ApiBody({
+    type: RenameFileUploadDto,
+    description: 'Renombrar un archivo',
+  })
+  @ApiConsumes('application/json')
+  async renameFile(@Body() renameFileUploadDto: RenameFileUploadDto) {
+    const { oldKey, newKey } = renameFileUploadDto;
     await this.fileUploadService.renameFile(oldKey, newKey);
     return { message: 'File renamed successfully' };
   }

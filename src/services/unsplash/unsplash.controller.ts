@@ -1,6 +1,6 @@
 import { BadRequestException, Controller, Get, Query } from '@nestjs/common';
 import { UnsplashService } from './unsplash.service';
-import { LoggerService } from 'src/shared/logger/logger.service';
+import { LoggerService } from '../../shared/logger/logger.service';
 import {
   ApiOperation,
   ApiResponse,

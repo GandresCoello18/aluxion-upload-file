@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import * as AWS from 'aws-sdk';
 import { ConfigService } from '@nestjs/config';
-import { LoggerService } from 'src/shared/logger/logger.service';
+import { LoggerService } from '../../shared/logger/logger.service';
 import { UploadFromUnsplashDto } from './dto/upload-from-unsplash.dto';
 import axios from 'axios';
 

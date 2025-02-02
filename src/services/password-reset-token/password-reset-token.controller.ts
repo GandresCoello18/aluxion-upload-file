@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
 import { UsersService } from '../users/users.service';
 import { PasswordResetTokenService } from './password_reset_tokens.service';
-import { MailService } from 'src/mail/mail.service';
+import { MailService } from '../../mail/mail.service';
 import {
   ApiOperation,
   ApiResponse,

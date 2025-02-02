@@ -1,7 +1,7 @@
 import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
 import { AuthLoginDto } from './dto/auth-login.dto';
 import { AuthService } from './auth.service';
-import { UsersService } from 'src/services/users/users.service';
+import { UsersService } from '../users/users.service';
 import {
   ApiOperation,
   ApiResponse,

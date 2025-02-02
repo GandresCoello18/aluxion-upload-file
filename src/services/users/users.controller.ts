@@ -14,11 +14,11 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './user.entity';
-import { validGenderUser } from 'src/shared/helpers/user.helper';
+import { validGenderUser } from '../../shared/helpers/user.helper';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { JwtAuthGuard } from 'src/services/auth/guard/jwt-auth.guard';
-import { MailService } from 'src/mail/mail.service';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
+import { MailService } from '../../mail/mail.service';
 import { UpdatePasswordUserDto } from './dto/update-password-user.dto';
 import { PasswordResetTokenService } from '../password-reset-token/password_reset_tokens.service';
 import {

@@ -1,9 +1,9 @@
 import * as bcryptjs from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { Injectable } from '@nestjs/common';
-import { LoggerService } from 'src/shared/logger/logger.service';
+import { LoggerService } from '../../shared/logger/logger.service';
 import { ConfigService } from '@nestjs/config';
-import { User } from 'src/services/users/user.entity';
+import { User } from '../users/user.entity';
 
 @Injectable()
 export class AuthService {

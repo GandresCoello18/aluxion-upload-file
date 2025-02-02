@@ -1,9 +1,9 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { User } from 'src/services/users/user.entity';
-import { LoggerService } from 'src/shared/logger/logger.service';
-import { PasswordResetToken } from 'src/services/password-reset-token/password_reset_tokens.entity';
+import { User } from '../services/users/user.entity';
+import { LoggerService } from '../shared/logger/logger.service';
+import { PasswordResetToken } from '../services/password-reset-token/password_reset_tokens.entity';
 
 @Module({
   imports: [

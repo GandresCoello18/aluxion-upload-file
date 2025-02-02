@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import * as sgMail from '@sendgrid/mail';
 import { ConfigService } from '@nestjs/config';
 import { MailDataRequired } from '@sendgrid/mail';
-import { LoggerService } from 'src/shared/logger/logger.service';
+import { LoggerService } from '../shared/logger/logger.service';
 import * as path from 'path';
 import * as fs from 'fs';
 const mjml2html = require('mjml');
