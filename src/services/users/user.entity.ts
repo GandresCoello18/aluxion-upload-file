@@ -1,11 +1,13 @@
 import {
   Entity,
   PrimaryColumn,
+  OneToMany,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { EnumGenderUser } from './user.model';
+import { PasswordResetToken } from '../password-reset-token/password_reset_tokens.entity';
 
 @Entity()
 export class User {
@@ -59,4 +61,9 @@ export class User {
     comment: 'Date of last update',
   })
   updatedAt: Date;
+
+  @OneToMany(() => PasswordResetToken, (token) => token.user, {
+    onDelete: 'CASCADE',
+  })
+  passwordResetTokens: PasswordResetToken[];
 }

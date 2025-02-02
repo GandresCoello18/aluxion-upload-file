@@ -1,0 +1,27 @@
+<mjml>
+  <mj-head>
+    <mj-preview>¡Bienvenido a Aluxion!</mj-preview>
+  </mj-head>
+  <mj-body background-color="#f4f4f4">
+
+    <mj-include path="./src/mail/templates/layout/header.mjml" />
+
+    <mj-section background-color="#ffffff" padding="40px 20px">
+      <mj-column>
+        <mj-text font-size="18px" color="#555">
+          Hola, {{name}}. ¡Gracias por registrarte en nuestra plataforma! 🎉
+        </mj-text>
+        <mj-text font-size="16px" color="#555">
+          Estamos contentos de tenerte aquí.
+        </mj-text>
+        <mj-button background-color="#000" color="white" font-size="16px"
+          href="https://aluxion.com/" padding="15px 30px">
+          Sitio Web
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-include path="./src/mail/templates/layout/footer.mjml" />
+
+  </mj-body>
+</mjml>

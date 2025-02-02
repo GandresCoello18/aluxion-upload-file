@@ -1,0 +1,15 @@
+<mj-section background-color="#333333" padding="20px">
+  <mj-column>
+    <mj-text font-size="14px" color="#ffffff" align="center">
+      ¿Necesitas ayuda? <a href="mailto:soporte@aluxion.com" style="color:#00aced;">Contáctanos</a>
+    </mj-text>
+    <mj-social mode="horizontal" align="center">
+      <mj-social-element name="instagram" href="https://www.instagram.com/aluxionlabs/"></mj-social-element>
+      <mj-social-element name="twitter" href="https://x.com/AluxionLabs"></mj-social-element>
+      <mj-social-element name="linkedin" href="https://www.linkedin.com/company/aluxion/posts/?feedView=all"></mj-social-element>
+    </mj-social>
+    <mj-text font-size="12px" color="#cccccc" align="center">
+      © 2025 Aluxion. Todos los derechos reservados.
+    </mj-text>
+  </mj-column>
+</mj-section>

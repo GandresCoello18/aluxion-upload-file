@@ -18,7 +18,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('File Upload API')
-    .setDescription('API para gestión de archivos')
+    .setDescription('File Upload API description')
     .setVersion('1.0')
     .build();
 

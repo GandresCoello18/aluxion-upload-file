@@ -1,8 +1,9 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { User } from 'src/users/user.entity';
+import { User } from 'src/services/users/user.entity';
 import { LoggerService } from 'src/shared/logger/logger.service';
+import { PasswordResetToken } from 'src/services/password-reset-token/password_reset_tokens.entity';
 
 @Module({
   imports: [
@@ -16,9 +17,9 @@ import { LoggerService } from 'src/shared/logger/logger.service';
         username: configService.get<string>('DB_USER'),
         password: configService.get<string>('DB_PASS'),
         database: configService.get<string>('DB_NAME'),
-        entities: [User],
+        entities: [User, PasswordResetToken],
         autoLoadEntities: true,
-        synchronize: true,
+        synchronize: configService.get<string>('NODE_ENV') !== 'production',
       }),
     }),
   ],

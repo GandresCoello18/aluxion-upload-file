@@ -1,0 +1,8 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+    <mj-image width="150px" src="https://media.licdn.com/dms/image/v2/D4D0BAQFTFde2f1cTrA/company-logo_100_100/company-logo_100_100/0/1706036193820/aluxion_logo?e=1746662400&v=beta&t=euZs3EXZS4m8grM9AKUjJ8oXeFMjsrLMwuW8N7otHuQ" />
+    <mj-text font-size="22px" color="#333" font-weight="bold">
+      ¡Bienvenido a Aluxion!
+    </mj-text>
+  </mj-column>
+</mj-section>

@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthService } from 'src/services/auth/auth.service';
 
 @Injectable()
 export class UsersService {
@@ -30,10 +30,12 @@ export class UsersService {
 
   async createUser(user: User) {
     const hashedPassword = await this.authService.hashPassword(user.password);
-    return await this.usersRepository.save({
+    const newUser = await this.usersRepository.save({
       ...user,
       password: hashedPassword,
     });
+    newUser.password = '';
+    return newUser;
   }
 
   async delete(idUser: string) {
@@ -42,12 +44,20 @@ export class UsersService {
 
   async update(idUser: string, updateUserDto: UpdateUserDto): Promise<User> {
     const user = await this.usersRepository.findOne({ where: { idUser } });
+    if (updateUserDto?.password) {
+      const hashedPassword = await this.authService.hashPassword(
+        updateUserDto.password,
+      );
+      updateUserDto.password = hashedPassword;
+    }
 
     if (!user) {
       throw new Error('User not found');
     }
 
     const updatedUser = this.usersRepository.merge(user, updateUserDto);
-    return await this.usersRepository.save(updatedUser);
+    const savedUser = await this.usersRepository.save(updatedUser);
+    savedUser.password = '';
+    return savedUser;
   }
 }
