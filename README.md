@@ -1,4 +1,4 @@
-# Meniuz Server
+# Aluxion / Upload File
 
 ![Logo](https://media.licdn.com/dms/image/v2/D4D0BAQFTFde2f1cTrA/company-logo_100_100/company-logo_100_100/0/1706036193820/aluxion_logo?e=1746662400&v=beta&t=euZs3EXZS4m8grM9AKUjJ8oXeFMjsrLMwuW8N7otHuQ)
 
@@ -39,6 +39,22 @@ Unit testing component
 ```
 yarn test
 ```
+
+## Puntos a cubrir 💯
+
+- Login- Registro (Con la contraseña encriptada) ✅
+- Olvide contraseña con envío de email. ✅
+- Subida de archivos (AWS S3) ✅
+- Bajada de archivos (AWS S3) 🛑 -> (Acceso denegado fue la respuesta de AWS al tratar de bajar un archivo de S3)
+- Gestor de archivos donde puedes: cambiar nombre y obtener enlace de archivo. (AWS S3) 🛑 -> (Acceso denegado fue la respuesta de AWS al tratar de renombrar un archivo de S3)
+- Integrar un buscador de imagenes online usando una API externa (Unsplash por ejemplo) ✅
+- Subir una imagen proveniente de una API externa directo a S3 (Es decir, sin que el usuario tenga que bajar la imagen en su local y luego subirla manualmente) ✅
+- Sistema que mejor consideres para el tipo de estructura en base de datos ✅
+- Servicio de OAuth mediante Token. ✅
+- Pruebas unitarias (Jest) ✅
+- Uso de Docker y NestJS ✅
+- Documentación de servicios con SWAGER. ✅
+- Arquitectura escalable ✅
 
 _Corre las pruebas automatizadas y pruebas en api rest, no es necesario usar un cliente o interfaz de usuario para probar los puntos de entrada de cada petición._
 
